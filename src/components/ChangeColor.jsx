@@ -1,18 +1,28 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { ChangeColor } from "../features/them";
 
-function ChangeColor() {
+function ChangeMyColor() {
+  const dispatch = useDispatch();
   const [color, setColor] = useState("");
 
   return (
-    <button
-      type="text"
-      onChange={(event) => {
-        setColor(event.target.value);
-      }}
-    >
-      Change Color
-    </button>
+    <div>
+      <input
+        type="text"
+        onChange={(event) => {
+          setColor(event.target.value);
+        }}
+      />
+      <button
+        onClick={() => {
+          dispatch(ChangeColor(color));
+        }}
+      >
+        Change Color
+      </button>
+    </div>
   );
 }
 
-export default ChangeColor;
+export default ChangeMyColor;
